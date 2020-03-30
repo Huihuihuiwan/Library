@@ -1,0 +1,58 @@
+.item {
+    width: 20%;
+    border: 1px solid #e4ecf3;
+    box-shadow: 1px 2px 3px #f2f6f8;/*边框阴影*/
+    border-radius: 6px;/*圆角边框*/
+    background: 10px;
+    min-width: 200px;
+    margin: 22px 0 0 2.1%;
+    float: left;/*向左浮动*/
+    overflow: hidden;
+    transition: all .3s;
+}
+
+/*CSS子元素选择器*/
+.table > thead > tr > th {
+    text-align: center;
+}
+
+.squarel {
+    text-align: center;
+    font-size: 200%;
+    width: 33%;
+    border: 3px solid #e4ecf4;
+    box-shadow: 4px 5px 6px #f2f6f8;
+    border-radius: 10px;
+
+    border-image-repeat: space;
+    padding-left: 0px;
+    padding-top: 70px;
+    padding-right: 0px;
+    padding-bottom: 65px;
+    min-width: 200px;
+    margin: 22px 0 0 2.1%;
+    float: left;
+    overflow: hidden;
+    transition: all .3s;
+}
+
+.square2 {
+    text-align: center;
+    font-size: 200%;
+    width: 33%;
+    border: 3px solid #e4ecf4;
+    box-shadow: 4px 5px 6px #f2f6f8;
+    border-radius: 10px;
+    border-image-repeat: space;
+    padding-left: 0px;
+    padding-top: 70px;
+    padding-right: 0px;
+    padding-bottom: 65px;
+    min-width: 200px;
+    overflow: hidden;
+    transition: all .3s;
+}
+
+a {
+    text-decoration: none;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>图书管理系统</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/lib/css/homepage.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div th:include="../static/common/headbar :: headbar"></div>
+    <!--th:fragment 布局标签，定义一个代码片段，方便其它地方引用-->
+    <div th:fragment="homepage">
+        <nav class="nav nav-tabs" style="margin-top: 50px; background-color: #eeeeee">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/library/homepage">图书借阅</a>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/library/booklist">预约图书</a> </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                管理预约
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/library/reservation">查看预约情况</a> </li>
+                                <li><a href="/library/borrow">退还图书</a> </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" style="color: black">
+                            <span th:text="${user.userName} + ',欢迎您'" class="glyphicon glyphicon-user"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/library/login">
+                            <span class="glyphicon glyphicon-log-in">退出</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <a href="/library/booklist">
+        <div class="squarel">
+            <div class="no-logo">预约图书</div>
+        </div>
+    </a>
+
+    <a href="/library/reservation">
+        <div class="squarel">
+            <div class="no-logo">查看预约情况</div>
+        </div>
+    </a>
+
+    <a href="/library/borrow">
+        <div class="squarel">
+            <div class="no-logo">退还图书</div>
+        </div>
+    </a>
+
+    <a href="#">
+        <div class="squarel">
+            <div class="no-logo">更多功能</div>
+        </div>
+    </a>
+
+</body>
+</html>

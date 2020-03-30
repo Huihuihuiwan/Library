@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<!--<html xmlns:th="http://www.thymeleaf.org">和下面的区别是什么？-->
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>添加图书</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/lib/css/homepage.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <!--..表示当前路径的上一级目录。.点表示当前路径-->
+    <div th:include="../static/common/headbar :: headbar"></div><!--resources-->
+    <div th:include="./detail_admin :: homepage"></div><!--templates下的detail_admin中的homepage-->
+    <div style="padding: 20px 550px 10px">
+        <!--在控制器元素（比如按钮或者链接）上设置属性 data-toggle="modal"，
+        同时设置 data-target="#identifier" 或 href="#identifier"
+        来指定要切换的特定的模态框（带有 id="identifier"）。
+        Bootstrap默认为很多组件都提供了5种颜色的样式，
+
+        这5种颜色分别是：
+        primary（重点蓝）、success（成功绿）、info（信息蓝）、warning（警告橙）、danger（危险红）-->
+        <button class="btn btn-success" data-toggle="modal" data-target="#add">添加图书</button>
+        <button class="btn btn-danger" data-toggle="modal" data-target="#delete">删除图书</button>
+    </div>
+
+    <!--添加图书窗口-->
+    <!--在模态框中需要注意两点：
+        第一是 .modal，用来把 <div> 的内容识别为模态框。
+        第二是 .fade class。当模态框被切换时，它会引起内容淡入淡出。
+        把标签和控件放在一个带有 class .form-group 的 <div> 中。这是获取最佳间距所必需的。
+    -->
+    <div id="add" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button class="close" data-dismiss="modal">
+                        <span>&times;</span><!--&times;转换成x-->
+                    </button>
+                </div>
+                <div class="modal-title">
+                    <h1 class="text-center">添加图书</h1>
+                </div>
+                <div class="modal-body">
+                    <form id="form-login">
+                        <div class="form-group has-feedback">
+                            <label for="ad-isbn">isbn</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-phone"></span>
+                                </span>
+                                <input id="ad-isbn" class="form-control" placeholder="请输入ISBN(ISBN只能为13位数字)" maxlength="13" type="text">
+                            </div>
+                            <span style="color:red; display: none;" class="tips"></span>
+                            <span style="display: none;" class="glyphicon glyphicon-remove form-control-feedback"></span>
+                            <span style="display: none;" class="glyphicon glyphicon-ok form-control-feedback"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label for="ad-bname">书名</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-book"></span>
+                                </span>
+                                <input id="ad-bname" class="form-control" placeholder="请输入书名" maxlength="20">
+                            </div>
+                            <span style="color:red;display: none;" class="tips"></span>
+                            <span style="display: none;" class="glyphicon glyphicon-remove form-control-feedback"></span>
+                            <span style="display: none;" class="glyphicon glyphicon-ok form-control-feedback"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label for="ad-publisher">出版社</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-info-sign"></span>
+                                </span>
+                                <input id="ad-publisher" class="form-control" placeholder="请输入出版社" maxlength="10">
+                            </div>
+
+                            <span style="color:red;display: none;" class="tips"></span>
+                            <span style="display: none;" class="glyphicon glyphicon-remove form-control-feedback"></span>
+                            <span style="display: none;" class="glyphicon glyphicon-ok form-control-feedback"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label for="ad-writer">作者</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                </span>
+                                <input id="ad-writer" class="form-control" placeholder="请输入作者" maxlength="10">
+                            </div>
+
+                            <span style="color:red;display: none;" class="tips"></span>
+                            <span style="display: none;" class="glyphicon glyphicon-remove form-control-feedback"></span>
+                            <span style="display: none;" class="glyphicon glyphicon-ok form-control-feedback"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label for="ad-ptime">出版时间</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                                <input id="ad-ptime" class="form-control" placeholder="请输入出版时间(日期应形如XXXX-XX-XX)" maxlength="10">
+                            </div>
+
+                            <span style="color:red;display: none;" class="tips"></span>
+                            <span style="display: none;" class="glyphicon glyphicon-remove form-control-feedback"></span>
+                            <span style="display: none;" class="glyphicon glyphicon-ok form-control-feedback"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label for="ad-num">数量</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </span>
+                                <input id="ad-num" class="form-control" placeholder="请输入数量" maxlength="4">
+                            </div>
+
+                            <span style="color:red;display: none;" class="tips"></span>
+                            <span style="display: none;" class="glyphicon glyphicon-remove form-control-feedback"></span>
+                            <span style="display: none;" class="glyphicon glyphicon-ok form-control-feedback"></span>
+                        </div>
+                        <div class="text-right">
+                            <button class="btn btn-primary" type="button" id="btn-add">添加</button>
+                            <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="delete" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-title">
+                    <h1 class="text-center">删除图书</h1>
+                </div>
+                <div class="modal-body">
+                    <form id="form-delete">
+                        <div class="form-group has-feedback">
+                            <label for="dl-isbn">isbn</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-phone"></span>
+                                </span>
+                                <input id="dl-isbn" class="form-control" placeholder="请输入ISBN" maxlength="13" type="text">
+                            </div>
+                            <span style="color:red;display: none;" class="tips"></span>
+                            <span style="display: none;" class="glyphicon glyphicon-remove form-control-feedback"></span>
+                            <span style="display: none;" class="glyphicon glyphicon-ok form-control-feedback"></span>
+                        </div>
+
+                        <div class="text-right">
+                            <button class="btn btn-primary" type="button" id="btn-delete">删除</button>
+                            <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default" style="width: 90%;margin-left: 5%">
+        <div class="panel-heading">
+            <h3 class="panel-title" style="text-align:center">图书信息</h3>
+        </div>
+        <div class="panel-body">
+            <table class="table table-hover" style="text-align:center">
+                <thead>
+                <tr style="text-align: center">
+                    <th>isbn</th>
+                    <th>书名</th>
+                    <th>出版社</th>
+                    <th>作者</th>
+                    <th>出版时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="booklist: ${list}">
+                    <td th:text="${booklist.isbn}"></td>
+                    <td th:text="${booklist.bname}"></td>
+                    <td th:text="${booklist.publisher}"></td>
+                    <td th:text="${booklist.writer}"></td>
+                    <td th:text="(${booklist.ptime.getYear()}+1900)+'年'"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!--
+    把脚本置于 <body> 元素的底部，可改善显示速度，因为脚本编译会拖慢显示。
+    使用外部脚本，在 <script> 标签的 src (source) 属性中设置脚本的名称：
+    -->
+    <script src="/static/lib/js/check.js"></script>
+</body>
+</html>

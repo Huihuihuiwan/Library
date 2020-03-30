@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset=" UTF-8">
+    <title>图书管理系统</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--
+        加上../static/否则找不到siginin.css文件
+        ..上级目录
+        需要在config中配置静态文件的加载路径，否则找不到siginin.css
+    -->
+    <link rel="stylesheet" href="../static/lib/css/siginin.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<!--布局标签，替换内容到引入的文件-->
+    <div th:include="../static/common/headbar :: headbar"></div>
+
+    <div class="container">
+    <form class="form-signin" action="/library/detail">
+        <img src="../static/lib/images/login.jpg" class="img-circle" alt="login-logo" width="270px" height="270px">
+        <h2 class="form-signin-heading">登录界面</h2>
+
+        <label for="username" class="sr-only">用户名</label>
+        <input type="text" class="form-control" placeholder="请输入用户名" required autofocus name="username" id="username">
+
+        <label for="password" class="sr-only">密码</label>
+        <input type="password" name="password" class="form-control" placeholder="请输入密码" id="password">
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+    </form>
+</div>
+</body>
+
+</html>

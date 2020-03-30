@@ -1,0 +1,43 @@
+
+#thymeleaf 静态资源的配置（固定格式）
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: UTF-8
+    mode: HTML5
+    #关闭缓存，即时刷新，上线生产环境需要改为true
+    cache: false
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/library_wan?serverTimezone=UTC
+    username: root
+    password: wan
+
+    #配置druid连接池
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  mail:
+    host: smtp.163.com
+    username: library@163.com
+    password: 123456
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true
+
+
+mybatis:
+  mapper-locations: classpath:Mapper/*.xml
+  type-aliases-package: com.hfnu.library.pojo
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+mail:
+  fromMail:
+    addr: library@163.com
+server:
+  port: 8081

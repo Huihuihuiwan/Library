@@ -1,0 +1,50 @@
+body {
+    padding-top: 70px;
+    padding-bottom: 40px;
+    background-color: #eee;
+}
+
+.form-signin {
+    max-width: 300px;
+    padding: 15px;
+    margin: 0 auto;
+}
+/*多类选择器*/
+/*点之间留一个空格，否则查不到*/
+.form-signin .form-signin-heading,
+.form-signin .checkbox{
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.form-signin .checkbox {
+    font-weight: normal;
+}
+
+.form-signin .form-control {
+    position: relative; /*相对布局*/
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;/*内边距*/
+    font-size: 16px;/*字体大小*/
+}
+
+/*当鼠标聚焦的时候执行*/
+.form-signin .form-control:focus {
+    /*设置元素堆叠顺序*/
+    z-index: 2;
+}
+
+.form-signin input[type = "email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type = "password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+使数据库中的字段与实体类的属性对应起来的两种方式：
+1、为实体类的属性起别名（这种方式的效率高一点）
+2、单独配置查询结果的列名称和实体类的属性名的对应关系
+-->
+<mapper namespace="com.hfnu.library.dao.BookMapper">
+    <select id="getList" resultType="BookList">
+        select * from booklist
+    </select>
+    <!--      insert into booklist values
+       (#{booklist.isbn},#{booklist.bname},
+        #{booklist.publisher},#{booklist.writer},
+        #{booklist.ptime},#{booklist.number},
+        #{booklist.operator}, #{location}, #{state})-->
+  <insert id="addBookList" parameterType="com.hfnu.library.pojo.BookList">
+      call library.new_book(#{booklist.isbn}, #{booklist.bname},
+      #{booklist.publisher}, #{booklist.writer},
+      #{booklist.ptime}, #{booklist.number},
+      #{booklist.operator}, #{location}, #{state})
+
+    </insert>
+
+    <delete id="deleteBookListById" parameterType="java.lang.String" >
+        delete from booklist where ISBN = #{isbn}
+    </delete>
+</mapper>
